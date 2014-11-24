@@ -91,26 +91,6 @@ class AssertionsTest < Minitest::Test
       end
     end
 
-    # assert_output(stdout = nil, stderr = nil)
-    # Fails if stdout or stderr do not output the expected results.
-    # With this one, you pass it a block containing your code
-    def test_assert_output
-      require 'stringio'
-      fake_stdout    = StringIO.new
-      initial_stdout = $stdout
-      $stdout        = fake_stdout
-      begin
-        puts "blue"
-      ensure
-        $stdout = initial_stdout
-      end
-      expected_output = "black"
-      actual_output   = fake_stdout.string
-      unless expected_output == actual_output
-        raise "Expected code to print #{expected_output.inspect}, but got #{actual_output.inspect}"
-      end
-    end
-
     # assert_predicate(o1, op, msg = nil)
     # things that should be true
     def test_assert_predicate
@@ -119,10 +99,6 @@ class AssertionsTest < Minitest::Test
       unless object.send predicate
         raise "Expected #{object.inspect} to be #{predicate}"
       end
-    end
-
-    def test_assert_predicate2
-      raise "Fill this in with your own version that uses something other than a string!"
     end
 
     # assert_raises(*exp)
