@@ -37,7 +37,7 @@ class AssertionsTest < Minitest::Test
       expected      = 1.0
       allowed_delta = 0.01
 
-      actual_delta = Math.abs(expected - actual) # absolute value
+      actual_delta = (expected - actual).abs # absolute value
       if allowed_delta < actual_delta
         raise "Expected |1.2 - 1.0| (0.19999999999999996) to be <= 0.01."
       end
