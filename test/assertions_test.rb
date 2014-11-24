@@ -127,6 +127,13 @@ class AssertionsTest < Minitest::Test
 
     # assert_raises(*exp)
     # Fails unless the block raises one of exp.
+    #
+    # Josh note:
+    #   The method takes an exception you expect to be raised
+    #   And a block that you expect to raise it
+    #   eg1
+    #     assert_raises(InvalidCredentialsError) { MyTwitterClient.new(invalid_credentials).login }
+    #     assert_raises(RuntimeError) { raise RuntimeError, "zomg" }
     def test_assert_raises
       expected_error = FloatDomainError
       saw_error      = false
